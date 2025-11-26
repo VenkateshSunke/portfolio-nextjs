@@ -1,4 +1,12 @@
-export default function About() {
+"use client";
+
+import React from "react";
+import { withExperiment } from "../../probat/runtime";
+import { PROBAT_COMPONENTS, PROBAT_REGISTRIES } from "../../probat/index";
+
+const __PROBAT_KEY__ = "app/components/About.tsx";
+
+const About = () => {
     return (
         <section
             id="about"
@@ -40,5 +48,13 @@ export default function About() {
             </div>
         </section>
     );
-}
+};
 
+// Probat Generate Lines.
+export default (() => {
+  const meta = PROBAT_COMPONENTS[__PROBAT_KEY__];
+  const reg  = PROBAT_REGISTRIES[__PROBAT_KEY__] as Record<string, React.ComponentType<any>> | undefined;
+  return (meta?.proposalId && reg)
+    ? withExperiment<any>(About as any, { proposalId: meta.proposalId, registry: reg })
+    : About;
+})();
