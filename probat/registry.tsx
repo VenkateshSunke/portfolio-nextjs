@@ -1,10 +1,10 @@
 // probat/registry.tsx
         import type React from "react";
-        import Exp_0_a from "./91b4d983-b94a-467b-8f5c-dd8c03bfe1b8/073fcf30-24d1-45b2-a102-8bf70b305cbe";
-import Exp_1_b from "./91b4d983-b94a-467b-8f5c-dd8c03bfe1b8/0faafb0e-00d1-4bd4-94fa-bc3301fe5b31";
-import Exp_2_c from "./91b4d983-b94a-467b-8f5c-dd8c03bfe1b8/c8248ba1-58fb-4620-828d-0f5c8ed6d614";
+        import Exp_0_a from "./9cf619d0-c77d-4c63-838a-b678fc532e78/bc3d0038-d787-4c96-92d5-a71048975de7";
+import Exp_1_b from "./9cf619d0-c77d-4c63-838a-b678fc532e78/9f9fa050-123a-4938-9b5e-047484f2f9a9";
+import Exp_2_c from "./9cf619d0-c77d-4c63-838a-b678fc532e78/d02dbcce-e2d7-4081-8ad3-e7e29f4d87de";
         export const PROBAT_REGISTRIES: Record<string, Record<string, React.ComponentType<any>>> = {
-          "app/components/About.tsx": {
+          "app/components/Hero.tsx": {
             "a": Exp_0_a,
     "b": Exp_1_b,
     "c": Exp_2_c,
