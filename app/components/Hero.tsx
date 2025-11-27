@@ -1,4 +1,12 @@
-export default function Hero() {
+"use client";
+
+import React from "react";
+import { withExperiment } from "../../probat/runtime";
+import { PROBAT_COMPONENTS, PROBAT_REGISTRIES } from "../../probat/index";
+
+const __PROBAT_KEY__ = "app/components/Hero.tsx";
+
+const HeroComponent = () => {
     return (
         <section
             id="home"
@@ -39,5 +47,12 @@ export default function Hero() {
             </div>
         </section>
     );
-}
+};
 
+export default (() => {
+  const meta = PROBAT_COMPONENTS[__PROBAT_KEY__];
+  const reg  = PROBAT_REGISTRIES[__PROBAT_KEY__] as Record<string, React.ComponentType<any>> | undefined;
+  return (meta?.proposalId && reg)
+    ? withExperiment<any>(HeroComponent as any, { proposalId: meta.proposalId, registry: reg })
+    : HeroComponent;
+})();
