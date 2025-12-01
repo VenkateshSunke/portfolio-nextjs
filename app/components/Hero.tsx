@@ -1,4 +1,16 @@
-export default function Hero() {
+"use client";
+
+import React from "react";
+import { withExperiment } from "../../probat/runtime";
+import { PROBAT_COMPONENTS, PROBAT_REGISTRIES } from "../../probat/index";
+
+const __PROBAT_KEY__ = "app/components/Hero.tsx";
+
+interface HeroProps {
+  probat?: { trackClick: () => void };
+}
+
+const Hero = ({ probat }: HeroProps) => {
     return (
         <section
             id="home"
@@ -24,12 +36,14 @@ export default function Hero() {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
                         <a
                             href="#projects"
+                            data-probat-conversion="true"
                             className="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
                         >
                             View My Work
                         </a>
                         <a
                             href="#contact"
+                            data-probat-conversion="true"
                             className="px-8 py-3 bg-white text-blue-600 border-2 border-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200"
                         >
                             Get In Touch
@@ -41,3 +55,11 @@ export default function Hero() {
     );
 }
 
+// Probat Generate Lines.
+export default (() => {
+  const meta = PROBAT_COMPONENTS[__PROBAT_KEY__];
+  const reg  = PROBAT_REGISTRIES[__PROBAT_KEY__] as Record<string, React.ComponentType<any>> | undefined;
+  return (meta?.proposalId && reg)
+    ? withExperiment<any>(Hero as any, { proposalId: meta.proposalId, registry: reg })
+    : Hero;
+})();
