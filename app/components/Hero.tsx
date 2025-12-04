@@ -1,4 +1,15 @@
-export default function Hero() {
+"use client";
+
+import React from "react";
+import { withExperiment } from "@probat/react";
+
+const __PROBAT_COMPONENT_PATH__ = "app/components/Hero.tsx";
+
+interface HeroProps {
+    probat?: { trackClick: () => void };
+}
+
+const Hero = ({ probat }: HeroProps) => {
     return (
         <section
             id="home"
@@ -25,12 +36,14 @@ export default function Hero() {
                         <a
                             href="#projects"
                             className="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+                            data-probat-conversion="true"
                         >
                             View My Work
                         </a>
                         <a
                             href="#contact"
                             className="px-8 py-3 bg-white text-blue-600 border-2 border-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200"
+                            data-probat-conversion="true"
                         >
                             Get In Touch
                         </a>
@@ -39,5 +52,10 @@ export default function Hero() {
             </div>
         </section>
     );
-}
+};
 
+// Probat Generate Lines - NEW API: No config/registry files needed!
+// repoFullName is read from ProbatContext (set in layout.tsx or ProbatProvider)
+export default withExperiment<any>(Hero as any, {
+    componentPath: __PROBAT_COMPONENT_PATH__
+} as any);
