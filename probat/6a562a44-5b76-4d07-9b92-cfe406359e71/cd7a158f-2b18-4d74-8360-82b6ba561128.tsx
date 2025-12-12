@@ -1,35 +1,24 @@
-"use client";
-
-import React from "react";
-import { withExperiment } from "@probat/react";
-
-const __PROBAT_COMPONENT_PATH__ = "app/components/About.tsx";
-
-interface AboutProps {
-    probat?: { trackClick: () => void };
-}
-
-const About = ({ probat }: AboutProps) => {
+export default function About({ probat }: { probat?: { trackClick: () => void } }) {
     return (
         <section
             id="about"
-            className="py-20 bg-white"
+            className="py-20 bg-gray-900"
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         About Me
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded"></div>
+                    <div className="w-24 h-1 bg-[#888888] mx-auto rounded"></div>
                 </div>
                 <div className="max-w-4xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <div className="w-64 h-64 mx-auto bg-gradient-to-br from-blue-400 to-purple-400 rounded-full flex items-center justify-center text-white text-6xl font-bold">
+                            <div className="w-64 h-64 mx-auto bg-gray-800 border-4 border-[#888888] rounded-full flex items-center justify-center text-white text-6xl font-bold">
                                 YN
                             </div>
                         </div>
-                        <div className="space-y-4 text-lg text-gray-600">
+                        <div className="space-y-4 text-lg text-gray-300">
                             <p>
                                 I'm a passionate full-stack developer with a love for creating
                                 beautiful and functional web applications. I enjoy turning complex
@@ -52,7 +41,3 @@ const About = ({ probat }: AboutProps) => {
         </section>
     );
 }
-
-export default withExperiment<any>(About as any, {
-    componentPath: __PROBAT_COMPONENT_PATH__
-} as any);
