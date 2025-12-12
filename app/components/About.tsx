@@ -1,4 +1,15 @@
-export default function About() {
+"use client";
+
+import React from "react";
+import { withExperiment } from "@probat/react";
+
+const __PROBAT_COMPONENT_PATH__ = "app/components/About.tsx";
+
+interface AboutComponentProps {
+    probat?: { trackClick: () => void };
+}
+
+const AboutComponent = ({ probat }: AboutComponentProps) => {
     return (
         <section
             id="about"
@@ -40,5 +51,8 @@ export default function About() {
             </div>
         </section>
     );
-}
+};
 
+export default withExperiment<any>(AboutComponent as any, {
+    componentPath: __PROBAT_COMPONENT_PATH__
+} as any);
