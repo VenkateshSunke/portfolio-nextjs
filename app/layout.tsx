@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ProbatProviderClient } from "@probat/react"; // Added import
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ProbatProviderClient // Wrapped children with ProbatProviderClient
+          apiBaseUrl="https://gushi.onrender.com"
+          clientKey="" 
+          environment="prod"
+          repoFullName="VenkateshSunke/portfolio-nextjs"
+        >
+          {children}
+        </ProbatProviderClient>
+      </body>
     </html>
   );
 }
